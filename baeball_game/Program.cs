@@ -1,15 +1,19 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace baeball_game
+namespace BaseBall
 {
     class Program
     {
         static void Main(string[] args)
-        {
+        {       // 정답, 추측, 결과
+                // 배열은 0부터 시작한다. 0붜 설정해보기
+                // 1. (중복되지 않는 세 개의 0~9 사이의 정수로 이루어진 정답을 생성한다.
+                // 2. 추측을 입력받는다.
+                // 3. 정답과 추측을 비교하여 결과를 생성한다.
+                // 4. 결과를 출력한다.
+                // 5. 정답과 추측이 일치하지 않으면 2번으로 돌아간다.
+                // 6. 정답을 맞추는데 소요된 시간을 출력하고 종료한다.
         }
     }
 }
+
