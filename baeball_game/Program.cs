@@ -4,8 +4,11 @@ namespace BaseBall
 {
     class Program
     {
+        const int MaxValue = 10; //03. 코드의 가독성이 좋아짐
+        const int Digit = 3; //03. find all reference : Digit가 사용된 모든 레코드를 보여줌
+
         static void Main(string[] args)
-        { // 정답, 추측, 결과
+        { // 01. 정답, 추측, 결과
           // 배열은 0부터 시작한다. 0붜 설정해보기
           // 1. (중복되지 않는 세 개의 0~9 사이의 정수로 이루어진 정답을 생성한다.
             Random random = new Random(); // Random이라는 공간을 만듬
@@ -15,9 +18,9 @@ namespace BaseBall
             int answer2;
             while (true)
             {
-                answer0 = random.Next(10);
-                answer1 = random.Next(10);
-                answer2 = random.Next(10);
+                answer0 = random.Next(MaxValue);
+                answer1 = random.Next(MaxValue);
+                answer2 = random.Next(MaxValue);
                 if (answer0 != answer1 && answer1 != answer2 && answer2 != answer0)
                     break;
 
@@ -77,7 +80,7 @@ namespace BaseBall
                 Console.WriteLine($"S: {strike}, B: {ball}, O: {@out}"); // STRING INTERPOLATION
 
                 // 5. 정답과 추측이 일치하지 않으면 2번으로 돌아간다.
-                if (strike == 3)
+                if (strike == Digit)
                     break;
             }
 
