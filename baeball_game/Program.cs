@@ -4,8 +4,8 @@ namespace BaseBall
 {
     class Program
     {
-        const int MaxValue = 10; //03. 코드의 가독성이 좋아짐
-        const int Digit = 3; //03. find all reference : Digit가 사용된 모든 레코드를 보여줌
+        //const int MaxValue = 10; //03. 코드의 가독성이 좋아짐
+        //const int Digit = 3; //03. find all reference : Digit가 사용된 모든 레코드를 보여줌
 
         static void Main(string[] args)
         { // 01. 정답, 추측, 결과
@@ -14,7 +14,7 @@ namespace BaseBall
             Random random = new Random();   // 02. Random이라는 공간을 만듬
                                             // 02. Random random2; >> 공간을 만들지 않았음
                                             // 04. 배열은 개발된지 너무 오래돼서 잘 쓰지 않음. 배열 말고 Collection (Datastructure)을 써야함
-            int[] answers = new int[Digit]; // 04. 배열은 복수로!
+            int[] answers = new int[constant.Digit]; // 04. 배열은 복수로!
 
             while (true)
             {
@@ -24,11 +24,11 @@ namespace BaseBall
                 // 04.     answers[i] = random.Next(MaxValue);
                 // 04.     i++; //i +=1 // i = i +  1
                 // 04. }
-                for (int j = 0; j < Digit; j++)
+                for (int j = 0; j < constant.Digit; j++)
                     // { 04. 한줄일때는 {} 생략 가능
                     answers[j] = int.Parse(Console.ReadLine());
                 // }
-                if (answers0 != answers1 && answers1 != answers2 && answers2 != answers0) //todo: 04. 이 로직은 어려움. 나중에 수정!!! view<testlist
+                if (answers[0] != answers[1] && answers[1] != answers[2] && answers[2] != answers[0]) //todo: 04. 이 로직은 어려움. 나중에 수정!!! view<testlist
                     break;
 
             }
@@ -37,6 +37,10 @@ namespace BaseBall
             //02. Console.Write(answer1 + " ");
             //02. Console.Write(answer2 + " ");
             //02. Console.WriteLine();
+            Console.WriteLine("[정답]");
+            for (int i = 0; i < constant.Digit; i++)
+                Console.WriteLine(answers[i] + " ");
+            Console.WriteLine();
 
             int tryCount = 0;
 
@@ -45,12 +49,14 @@ namespace BaseBall
                 tryCount++;
                 // 2. 추측을 입력받는다.
 
-                int[] guesses = new int[Digit];
-                for (int i = 0; i < Digit; i++) // 04. for (int i = 0; i < guesses.Length; i++)  Length : property, Digit의 길이를 나타내주는것
+                int[] guesses = new int[constant.Digit];
+                for (int i = 0; i < constant.Digit; i++) // 04. for (int i = 0; i < guesses.Length; i++)  Length : property, Digit의 길이를 나타내주는것
                     guesses[i] = int.Parse(Console.ReadLine());
-                for (int i = 0; i < Digit; i++)
+
+                for (int i = 0; i < constant.Digit; i++)
                     Console.WriteLine(guesses[i] + " ");
                 Console.WriteLine();
+
 
                 // 03. int guess0 := Console.ReadLine(); readline은 문자열구를 반환 ->숫자구로 바꿔야함
                 // 02. Console.WriteLine("[추측] ");
@@ -62,35 +68,37 @@ namespace BaseBall
 
                 // 3. 정답과 추측을 비교하여 결과를 생성한다.
 
-                int strike = 0;
-                int ball = 0;
-                int @out = 0;
+                //int strike = 0;
+                //int ball = 0;
+                //int @out = 0;
 
-                for (int i = 0; i < Digit; i++)
-                {
-                    int j = (i + 1) % Digit;
-                    int K = (i + 2) % Digit;
+                Result result = new Result();
 
-                    if (answers[i] == guesses[i])
-                        strike++;
-                    else if (answers[i] == guesses[j] || answers[i] == guesses[k])
-                        ball++;
-                    else
-                        @out++;
-                }
+                //   for (int i = 0; i < Digit; i ++)
+                //   {
+                //       int j = (i + 1) % Digit;
+                //       int k = (i + 2) % Digit;
+                //           if (answers[i] == guesses[i])
+                //               result.Strike++;
+                //          else if (answers[i] == guesses[j] || answers[i] == guesses[k])
+                //              result.Ball++;
+                //          else
+                //              result.Out++;
+                //  }
 
+                result.Calculate(answers, guesses);
 
                 // 4. 결과를 출력한다.
-                Console.WriteLine($"S: {strike}, B: {ball}, O: {@out}"); // STRING INTERPOLATION
+                //Console.WriteLine($"S: {result.Strike}, B: {result.Ball}, O: {result.Out}"); // STRING INTERPOLATION
+                result.Print();
 
                 // 5. 정답과 추측이 일치하지 않으면 2번으로 돌아간다.
-                if (strike == Digit)
+                if (result.IsCorrect())
                     break;
             }
 
             // 6. 정답을 맞추는데 소요된 시간을 출력하고 종료한다.
             Console.WriteLine($"S: 총 {tryCount} 번만에 출력하였습니다.");
-
         }
     }
 }
