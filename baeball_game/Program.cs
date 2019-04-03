@@ -4,6 +4,24 @@ namespace BaseBall
 {
     class Program
     {
+        /// <summary>
+        /// 숫자 배열을 출력한다.
+        /// </summary>
+        /// <param name="prefix">숫자 출력 전에 출력할 문자열</param>
+        /// <param name="numbers">출력할 숫자</param>
+        static void PrintNumbers(string prefix, int[] numbers)
+        {
+            Console.WriteLine(prefix);
+            for (int i = 0; i < constant.Digit; i++)
+                Console.WriteLine(numbers[i] + " ");
+             Console.WriteLine();
+
+            //Console.WriteLine("[추측] ");
+            //for (int i = 0; i < constant.Digit; i++)
+            //    Console.WriteLine(guesses[i] + " ");
+            //Console.WriteLine();
+        }
+
         //const int MaxValue = 10; //03. 코드의 가독성이 좋아짐
         //const int Digit = 3; //03. find all reference : Digit가 사용된 모든 레코드를 보여줌
 
@@ -37,10 +55,13 @@ namespace BaseBall
             //02. Console.Write(answer1 + " ");
             //02. Console.Write(answer2 + " ");
             //02. Console.WriteLine();
-            Console.WriteLine("[정답]");
-            for (int i = 0; i < constant.Digit; i++)
-                Console.WriteLine(answers[i] + " ");
-            Console.WriteLine();
+
+            //Console.WriteLine("[정답]");
+            //for (int i = 0; i < constant.Digit; i++)
+            //    Console.WriteLine(answers[i] + " ");
+            // Console.WriteLine();
+
+            PrintNumbers("[정답] ", answers);
 
             int tryCount = 0;
 
@@ -53,9 +74,12 @@ namespace BaseBall
                 for (int i = 0; i < constant.Digit; i++) // 04. for (int i = 0; i < guesses.Length; i++)  Length : property, Digit의 길이를 나타내주는것
                     guesses[i] = int.Parse(Console.ReadLine());
 
-                for (int i = 0; i < constant.Digit; i++)
-                    Console.WriteLine(guesses[i] + " ");
-                Console.WriteLine();
+                PrintNumbers("[추측] ", guesses);
+
+                //Console.WriteLine("[추측] ");
+                //for (int i = 0; i < constant.Digit; i++)
+                //   Console.WriteLine(guesses[i] + " ");
+                //Console.WriteLine();
 
 
                 // 03. int guess0 := Console.ReadLine(); readline은 문자열구를 반환 ->숫자구로 바꿔야함
