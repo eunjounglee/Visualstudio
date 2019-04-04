@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace BaseBall
 {
-    class Answer
+    class Answer : NumberContainer
     {
-        private int[] numbers = new int[Constant.Digit];
-        public int At(int index) //몇번 째 어디에 위히 해 있는
+
+        public int At(int index)
         {
             return numbers[index];
         }
@@ -23,18 +23,10 @@ namespace BaseBall
                 for (int i = 0; i < Constant.Digit; i++)
                     numbers[i] = random.Next(Constant.MaxValue);
 
-                // todo: 
+                // todo: 나중에 수정하겠다능
                 if (numbers[0] != numbers[1] && numbers[1] != numbers[2] && numbers[2] != numbers[0])
                     break;
             }
-        }
-
-        public void Print()
-        {
-            Console.WriteLine("[정답] ");
-            for (int i = 0; i < Constant.Digit; i++)
-                Console.Write(numbers[i] + " ");
-            Console.WriteLine();
         }
     }
 }
