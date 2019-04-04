@@ -22,16 +22,16 @@ namespace BaseBall
         {
             Console.WriteLine($"S: {Strike}, B: {Ball}, O: {Out}"); // string interpolation
         }
-        public void Calculate(int[] answers, int[] guesses)
+        public void Calculate(Answer answer, Guess guesse)
         {
             for (int i = 0; i < constant.Digit; i++)
             {
                 int j = (i + 1) % constant.Digit;
                 int k = (i + 2) % constant.Digit;
 
-                if (answers[i] == guesses[i])
+                if (answer.numbers[i] == guesse.numbers[i])
                     Strike++;
-                else if (answers[i] == guesses[j] || answers[i] == guesses[k])
+                else if (answer.numbers[i] == guesse.numbers[j] || answer.numbers[i] == guesse.numbers[k])
                     Ball++;
                 else
                     Out++;

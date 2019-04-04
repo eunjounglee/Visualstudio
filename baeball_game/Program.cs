@@ -9,50 +9,16 @@ namespace BaseBall
         /// </summary>
         /// <param name="prefix">숫자 출력 전에 출력할 문자열</param>
         /// <param name="numbers">출력할 숫자</param>
-        static void PrintNumbers(string prefix, int[] numbers)
-        {
-            Console.WriteLine(prefix);
-            for (int i = 0; i < constant.Digit; i++)
-                Console.WriteLine(numbers[i] + " ");
-             Console.WriteLine();
 
-        }
-
-        //const int MaxValue = 10; //03. 코드의 가독성이 좋아짐
-        //const int Digit = 3; //03. find all reference : Digit가 사용된 모든 레코드를 보여줌
-
-        static int[] CreateAnswers()
-        {
-            Random random = new Random();   
-            int[] answers = new int[constant.Digit]; // 04. 배열은 복수로!
-
-            while (true)
-            {
-                for (int j = 0; j < constant.Digit; j++)
-                    // { 04. 한줄일때는 {} 생략 가능
-                    answers[j] = int.Parse(Console.ReadLine());
-
-                if (answers[0] != answers[1] && answers[1] != answers[2] && answers[2] != answers[0]) //todo: 04. 이 로직은 어려움. 나중에 수정!!! view<testlist
-                    break;
-
-            }
-
-            return answers;
-        }
-
-        static int[] InputGuesses()
-        {
-            int[] guesses = new int[constant.Digit];
-            for (int i = 0; i < guesses.Length; i++) // 04. for (int i = 0; i < guesses.Length; i++)  Length : property, Digit의 길이를 나타내주는것
-                guesses[i] = int.Parse(Console.ReadLine());
-        }
 
         static void Main(string[] args)
         { // 01. 정답, 추측, 결과
           // 01. 배열은 0부터 시작한다. 0부터 설정해보기
           // 1. (중복되지 않는 세 개의 0~9 사이의 정수로 이루어진 정답을 생성한다.
-            int[] answers = CreateAnswers();
-            PrintNumbers("[정답] ", answers);
+
+            Answers answer = new answers();
+            answer.Create();
+            amswer.Print();
 
 
             int tryCount = 0;
@@ -67,10 +33,10 @@ namespace BaseBall
             {
                 tryCount++;
                 // 2. 추측을 입력받는다.
-                
-                int[] guesses = InputGuesses();
 
-                PrintNumbers("[추측] ", guesses);
+                Guesses guess = new Guesses();
+                guesses.Input(); // int[] guesses = InputGuesses();
+                guesses.Print(); //PrintNumbers("[추측] ", guesses);
 
 
                 // 3. 정답과 추측을 비교하여 결과를 생성한다.
@@ -81,7 +47,7 @@ namespace BaseBall
 
                 Result result = new Result();
 
-                result.Calculate(answers, guesses);
+                result.Calculate(answer, guess);
 
                 // 4. 결과를 출력한다.
                 //Console.WriteLine($"S: {result.Strike}, B: {result.Ball}, O: {result.Out}"); // STRING INTERPOLATION
