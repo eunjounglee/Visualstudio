@@ -15,7 +15,7 @@ namespace BaseBall
         public bool IsCorrect() //true 또는 fals만 가지는
         { //엄청 복잡한 로직
           // todo : 하드 코드 제거해야 함
-            return Strike == 3;
+            return Strike == Constant.Digit;
         }
 
         internal void Print()
@@ -24,14 +24,14 @@ namespace BaseBall
         }
         public void Calculate(Answer answer, Guess guesse)
         {
-            for (int i = 0; i < constant.Digit; i++)
+            for (int i = 0; i < Constant.Digit; i++)
             {
-                int j = (i + 1) % constant.Digit;
-                int k = (i + 2) % constant.Digit;
+                int j = (i + 1) % Constant.Digit;
+                int k = (i + 2) % Constant.Digit;
 
-                if (answer.numbers[i] == guesse.numbers[i])
+                if (answer.At(i) == guesse.At(i))
                     Strike++;
-                else if (answer.numbers[i] == guesse.numbers[j] || answer.numbers[i] == guesse.numbers[k])
+                else if (answer.At(i) == guesse.At(j) || answer.At(i) == guesse.At(k))
                     Ball++;
                 else
                     Out++;

@@ -16,10 +16,10 @@ namespace BaseBall
           // 01. 배열은 0부터 시작한다. 0부터 설정해보기
           // 1. (중복되지 않는 세 개의 0~9 사이의 정수로 이루어진 정답을 생성한다.
 
-            Answers answer = new answers();
+            Answer answer = new Answer();
             answer.Create();
-            amswer.Print();
-
+            answer.Print();
+            
 
             int tryCount = 0;
 
@@ -34,9 +34,9 @@ namespace BaseBall
                 tryCount++;
                 // 2. 추측을 입력받는다.
 
-                Guesses guess = new Guesses();
-                guesses.Input(); // int[] guesses = InputGuesses();
-                guesses.Print(); //PrintNumbers("[추측] ", guesses);
+                Guess guess = new Guess();
+                guess.Input(); // int[] guesses = InputGuesses();
+                guess.Print(); //PrintNumbers("[추측] ", guesses);
 
 
                 // 3. 정답과 추측을 비교하여 결과를 생성한다.
